@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS MediaHistoryEntity (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    originalName TEXT NOT NULL,
+    cleanedName TEXT NOT NULL,
+    mediaType TEXT NOT NULL,
+    season INTEGER,
+    episode INTEGER,
+    timestamp INTEGER NOT NULL
+);
+
+insertEntry:
+INSERT INTO MediaHistoryEntity (originalName, cleanedName, mediaType, season, episode, timestamp)
+VALUES (?, ?, ?, ?, ?, ?);
+
+selectAll:
+SELECT * FROM MediaHistoryEntity ORDER BY timestamp DESC;
+
+deleteAll:
+DELETE FROM MediaHistoryEntity;
+
+countAll:
+SELECT COUNT(*) FROM MediaHistoryEntity;
+
