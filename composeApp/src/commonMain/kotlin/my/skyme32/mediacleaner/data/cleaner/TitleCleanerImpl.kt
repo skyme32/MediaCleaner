@@ -120,7 +120,7 @@ class TitleCleanerImpl(
     }
 
     private fun capitalizeTitle(title: String): String =
-        title.replaceFirstChar {
+        title.lowercase().replaceFirstChar {
             if (it.isLowerCase()) it.titlecase() else it.toString()
         }
 

@@ -112,4 +112,12 @@ class TitleCleanerImplTest {
 
         assertEquals("Some movie title", result.cleanedName)
     }
+
+    @Test
+    fun `capitalize with lowercase`() {
+        val input = "Project.Hail.Mary.2026.1080p.mkv"
+        val result = cleaner.clean(input)
+
+        assertEquals("Project hail mary (2026)", result.cleanedName)
+    }
 }

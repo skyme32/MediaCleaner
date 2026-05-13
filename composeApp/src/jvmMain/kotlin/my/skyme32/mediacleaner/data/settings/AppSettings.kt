@@ -2,10 +2,6 @@ package my.skyme32.mediacleaner.data.settings
 
 import com.russhwolf.settings.Settings
 
-/**
- * Gestión de configuración de la app con Multiplatform Settings.
- * SRP: solo gestiona preferencias del usuario.
- */
 class AppSettings(private val settings: Settings) {
 
     companion object {
@@ -14,7 +10,6 @@ class AppSettings(private val settings: Settings) {
         private const val KEY_NOISE_TERMS = "noise_terms"
         private const val TERM_SEPARATOR = "\n"
 
-        /** Términos/patrones de ruido por defecto. */
         val DEFAULT_NOISE_TERMS: List<String> = listOf(
             "480p", "720p", "1080p", "2160p", "4k",
             "x264", "x265", "h264", "h265", "hevc", "avc",
@@ -26,7 +21,7 @@ class AppSettings(private val settings: Settings) {
             "eztv", "rarbg", "yify", "ettv",
             "amzn", "nf", "hmax",
             "megusta", "elite", "flux", "ion10", "psa",
-            // Patrón regex avanzado: dominios web
+            "WEB", "DL", "Castellano", "rar",
             """[a-z]{2,}\.(com|net|org|to)"""
         )
     }
@@ -39,10 +34,6 @@ class AppSettings(private val settings: Settings) {
         get() = settings.getBoolean(KEY_RECURSIVE, true)
         set(value) = settings.putBoolean(KEY_RECURSIVE, value)
 
-    /**
-     * Lista de términos/patrones de ruido almacenados como string separado por \n.
-     * Soporta regex (ej: [a-z]{2,}\.(com|net|org|to)) además de palabras simples.
-     */
     var noiseTerms: List<String>
         get() {
             val raw = settings.getString(KEY_NOISE_TERMS, "")
